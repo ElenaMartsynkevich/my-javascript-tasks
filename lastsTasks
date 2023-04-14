@@ -1,0 +1,400 @@
+//Set. Задание 1
+let currencySet = new Set (["USD", "RUR", "BYN"]);
+console.log (currencySet);
+
+let currencySet = new Set ();
+currencySet.add ('USD');
+currencySet.add ('EUR');
+currencySet.add ('GBP');
+console.log (currencySet);
+
+//Задание 2
+let currencySet = new Set ();
+currencySet.add ('USD');
+currencySet.add ('EUR');
+currencySet.add ('GBP');
+console.log (currencySet);
+
+for (const item of currencySet) {
+console.log(item);
+}
+
+//Задание 3
+let currencySet = new Set ();
+currencySet.add ('USD');
+currencySet.add ('EUR');
+currencySet.add ('GBP');
+
+console.log (currencySet);
+
+currencySet.add ('AUD');
+console.log (currencySet);
+
+currencySet.add ('AUD');
+console.log (currencySet);
+
+let currenciesToAdd = ["JPY", "CHF", "USD"];
+currencySet = new Set([...currencySet, ...currenciesToAdd]);
+console.log (currencySet);
+
+//Задание 4
+let currencySet = new Set ();
+currencySet.add ('USD');
+currencySet.add ('EUR');
+currencySet.add ('GBP');
+
+console.log (currencySet);
+console.log ("Set has USD value: " + currencySet.has('USD'));
+currencySet.delete ('USD');
+console.log ("Set has USD value: " + currencySet.has('USD'));
+
+//Задание 5
+const Chance = require('chance');
+const chance = new Chance();
+let currencySet = new Set ();
+currencySet.add ('USD');
+currencySet.add ('EUR');
+currencySet.add ('GBP');
+
+let myArr = Array.from(currencySet)
+console.log(chance.pickone(myArr))
+console.log(chance.pickset(myArr, chance.integer({ min: 1, max: currencySet.size })))
+
+//Задание 6
+import {isSuperset, union, intersection, difference} from "./utils/helper.js";
+
+let currencySet1 = new Set (["USD", "RUR", "BYN", "JPY"]);
+let currencySet2 = new Set (["RUR", "BYN"]);
+let currencySet3 = new Set (["BYN", "JPY", "CLP", "CZK"]);
+
+console.log(isSuperset(currencySet1, currencySet2))
+console.log(union(currencySet1, currencySet3))
+console.log(intersection(currencySet1, currencySet3))
+console.log(difference(currencySet1, currencySet3))
+
+
+/* Задание 1 
+Реализуйте метод printPlanets для вывода данных по объекту из массива. Используйте его для вывода данных по массиву, чтобы убедиться, что преобразования массива были произведены верно.
+В идеале имплементация данного метода должна быть гибкой. 
+
+
+Поскольку значений у нас немного, то можно выводить из так:
+cy.log(`planet: ${planet.name}, radius: ${planet.radius}, density: ${planet.density}, distance:  ${planet.distance}`)
+
+
+Но дальше нужно этот способ вывода усовершенствовать. Этот способ не будет в полной мере работать, когда количество полей для planet увеличится.
+*/
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+]
+
+  function byField(field) {
+      return (a, b) => a[field] > b[field] ? 1 : -1;
+    }
+  planets.forEach(planet => console.log(`Planet: ${planet.planet}, Radius: ${planet.radius}, Density: ${planet.density}, Distance: ${planet.distance}`));
+
+  //Задание 2 
+  let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+]
+let planetsWithSolarSystem = planets.map(planet => {
+    return {...planet, solarSystem: "Solar System"};
+});
+
+  
+  planets.forEach(planet => console.log(`Planet: ${planet.planet}, Radius: ${planet.radius}, Density: ${planet.density}, 
+  Distance: ${planet.distance}, Solar System: ${planetsWithSolarSystem.solarSystem}`));
+  console.log(planetsWithSolarSystem);
+
+
+  let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+
+let solarSystemName = "Solar System";
+
+planets.forEach(planet => {
+	planet.solarSystem = solarSystemName;
+	console.log(`Planet: ${planet.planet}, Radius: ${planet.radius}, Density: ${planet.density}, Distance: ${planet.distance}, Solar System: ${planet.solarSystem}`);
+});
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+
+let solarSystemName = "Solar System";
+
+planets.forEach(planet => {
+	planet.solarSystem = solarSystemName;
+	console.log(planet);
+});
+
+//из объекта в массив
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+
+console.log(Object.entries(planets));
+console.log(Object.keys(planets).map(planet => planets[planet]));
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+
+console.log(Object.keys(planets).map(planet => {
+	const { planet: name, radius, density, distance } = planets[planet];
+	return `${planet}: planet:${name}, radius:${radius}, density:${density}, distance:${distance}`;
+  }).join('\n'));
+
+
+//добавить новый объект в массив 
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+let solarSystemName = "Solar System";
+planets.push({planet: "SomeNewPlanet", radius: 24764, density: 1.64, distance: 30.07, solarSystem: false});
+
+console.log(Object.keys(planets).map(planet => {
+	const { planet: name, radius, density, distance } = planets[planet];
+	return `${planet}: planet:${name}, radius:${radius}, density:${density}, distance:${distance}`;
+  }).join('\n'));
+
+
+  // сумма радиусов
+  const initialValue = 0;
+const sumRadius = planets.reduce((acc, { radius }) => acc + radius, initialValue);
+
+console.log(sumRadius);
+
+//расстояние меньше 5 с помощью filter
+console.log(planets.filter(planet => planet.distance < 5));
+
+
+//удалить SomeNewPlanet
+let index = planets.findIndex(planet => planet.planet ==="SomeNewPlanet");
+let withoutIndex = planets.splice(index, 1);
+console.log(planets)
+
+
+//сортировка планет по возрастанию 
+planets.sort( function(a, b) {
+	if (a.radius < b.radius) {
+		return -1;
+	}
+	if (a.radius > b.radius) {
+		return 1;
+	}
+	return 0;
+	});
+
+console.log(planets)
+
+// сортировка планет по имени 
+planets.sort( function(a, b) {
+	if (a.planet < b.planet) {
+		return -1;
+	}
+	if (a.planet > b.planet) {
+		return 1;
+	}
+	return 0;
+	});
+
+console.log(planets)
+
+//длина массива 
+console.log(planets.length)
+
+
+//Задание 1. из массива в map
+let planets = [
+{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+];
+
+const myMap = new Map();
+
+for (let planet of planets) {
+myMap.set(planet.planet, planet);
+}
+
+console.log(myMap.get('Mercury'));
+
+//задание 2. вывести в определенной форме Mercury: radius: 2440, density: 5.43, distance: 0.395
+planets.forEach((planet) => {
+	console.log(planet.planet + ': ' + Object.keys(planet).map(objKey => objKey + ': ' + planet[objKey]).join(', '));
+});
+
+
+//Реализуйте вывод данных из planetsMap о планете Saturn.
+//Используйте метод get() для получения value for ключу Saturn.
+
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+  ];
+  
+  const myMap = new Map();
+
+  for (let planet of planets) {
+  myMap.set(planet.planet, planet);
+  }
+  
+  console.log(myMap.get('Saturn'));
+
+
+  //Выведите общее количество элементов в коллекции
+
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+  ];
+  
+  const myMap = new Map();
+
+  for (let planet of planets) {
+  myMap.set(planet.planet, planet);
+  }
+
+
+  //Создайте коллекцию множество Set(), содержащую значения “Mercury” и “Not Mercury”.
+//Пройдите по значения множества и осуществите проверку, существует ли планета с данным ключом в Map(). 
+//Чтобы проверить, что в Map существует элемент с заданным ключом, используется метод has().
+
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+  ];
+  
+  const myMap = new Map();
+
+  for (let planet of planets) {
+  myMap.set(planet.planet, planet);
+  }
+
+  const mySet = new Set(["Mercury", "Not Mercury"]);
+  
+  for (let value of mySet) {
+	console.log(`Does planet "${value}" exist in myMap? ${myMap.has(value)}`);
+  }
+
+
+  //Удалите из planetsMap объект с ключом Uranus.
+
+
+let planets = [
+	{planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395},
+	{planet: "Venus", radius: 6052, density: 5.24, distance: 0.723},
+	{planet: "Earth", radius: 6378, density: 5.52, distance: 1},
+	{planet: "Mars", radius: 3396, density: 3.93, distance: 1.53},
+	{planet: "Jupiter", radius: 71492, density: 1.33, distance: 5.21},
+	{planet: "Saturn", radius: 60268, density: 0.69, distance: 9.551},
+	{planet: "Uranus", radius: 25559, density: 1.27, distance: 19.213},
+	{planet: "Neptune", radius: 24764, density: 1.64, distance: 30.07}
+  ];
+  
+  const myMap = new Map();
+
+  for (let planet of planets) {
+  myMap.set(planet.planet, planet);
+  }
+console.log(myMap.delete("Uranus"))
+console.log(myMap.has('Uranus'));
+ 
+
+ //Создайте новый объект Map() c информацией о планетах и выполните слияние двух Maps (используйте метод merge).
+
+
+let planets = new Map();
+planets.set("Mercury", {radius: 2440, density: 5.43, distance: 0.395});
+planets.set("Venus", {radius: 6052, density: 5.24, distance: 0.723});
+planets.set("Jupiter", {radius: 71492, density: 1.33, distance: 5.21});
+planets.set("Saturn", {radius: 60268, density: 0.69, distance: 9.551});
+planets.set("Uranus", {radius: 25559, density: 1.27, distance: 19.213});
+planets.set("Neptune", {radius: 24764, density: 1.64, distance: 30.07});
+
+let planets2 = new Map();
+planets2.set("Earth", {radius: 6378, density: 5.52, distance: 1});
+planets2.set("Mars", {radius: 3396, density: 3.93, distance: 1.53});
+
+const merged = new Map([...planets, ...planets2]);
+console.log(merged);
+ 
+  

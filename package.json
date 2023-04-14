@@ -1,0 +1,26 @@
+{
+  "name": "cypresstasks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "<h1>MY TEST JAVASCRIPT TASKS</h1>",
+  "main": "array.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaMartsynkevich/my-javascript-tasks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElenaMartsynkevich/my-javascript-tasks/issues"
+  },
+  "homepage": "https://github.com/ElenaMartsynkevich/my-javascript-tasks#readme",
+  "dependencies": {
+    "cypress": "^12.9.0"
+  },
+  "devDependencies": {
+    "chance": "^1.1.11"
+  }
+}
