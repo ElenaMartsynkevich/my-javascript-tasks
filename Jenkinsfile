@@ -21,11 +21,6 @@ pipeline {
                         bat 'npx cypress run --record --key ebc8b38a934b4a018636d4896013cb10 --parallel'
                     }
                 }
-                stage('Run tests in parallel C') {
-                    steps {
-                        bat 'npx cypress run --record --key ebc8b38a934b4a018636d4896013cb105 --parallel'
-                    }
-                }
             }
         }
     }
